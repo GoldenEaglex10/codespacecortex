@@ -1,0 +1,23 @@
+{
+  "tenant_id": "codespace",
+  "student_id": "student_123",
+  "assignment_id": "intro_python_hw3",
+  "submission_text": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, n):\n        if n % i == 0:\n            return False\n    return True\n\nprint(is_prime(7))\nprint(is_prime(10))",
+  "rubric": [
+    {
+      "criterion": "Correctness",
+      "max_points": 10,
+      "description": "The function correctly identifies prime numbers for all valid inputs, including edge cases like 0, 1, and 2."
+    },
+    {
+      "criterion": "Code style",
+      "max_points": 5,
+      "description": "Variable names are clear, code is not needlessly repetitive, and logic is easy to follow."
+    },
+    {
+      "criterion": "Efficiency",
+      "max_points": 5,
+      "description": "The solution avoids obviously unnecessary work (e.g. checking divisibility past the square root of n)."
+    }
+  ]
+}
