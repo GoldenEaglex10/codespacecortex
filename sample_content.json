@@ -1,5 +1,4 @@
 {
-  "tenant_id": "codespace",
   "course_id": "intro_python",
   "title": "Lesson 4: Functions and Recursion",
   "chunk_text": "A recursive function is a function that calls itself to solve a smaller instance of the same problem. Every recursive function needs two parts: a base case, which stops the recursion, and a recursive case, which breaks the problem down and calls the function again. Without a base case, a recursive function will call itself forever and cause a stack overflow. A classic example is calculating factorial: factorial(n) returns 1 if n is 0 (base case), otherwise it returns n multiplied by factorial(n-1) (recursive case)."

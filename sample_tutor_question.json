@@ -1,5 +1,4 @@
 {
-  "tenant_id": "codespace",
   "student_id": "student_123",
   "course_id": "intro_python",
   "question": "I don't understand recursion, can you explain it?",
