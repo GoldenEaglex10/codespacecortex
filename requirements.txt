@@ -1,0 +1,27 @@
+# === AI models (model routing — swap providers per request/task) ===
+anthropic>=0.40.0            # Claude SDK — talks to the model, handles tool-call loop
+openai>=1.54.0                # ChatGPT SDK — also used for DeepSeek, since DeepSeek's API is OpenAI-compatible (just a different base_url + key)
+google-genai>=0.3.0           # Gemini SDK (Google's newer unified GenAI SDK — replaces the old google-generativeai package)
+
+# === Web framework (to run/test the tutor as a standalone service) ===
+fastapi>=0.115.0             # exposes a /chat endpoint so you can hit this piece on its own
+uvicorn[standard]>=0.32.0    # runs the FastAPI app locally
+
+# === Data validation / schemas ===
+pydantic>=2.9.0              # request/response models, tool-call schemas
+pydantic-settings>=2.6.0     # loads config from .env cleanly
+
+# === Config / environment ===
+python-dotenv>=1.0.1         # reads your .env file (API keys, etc.)
+
+# === HTTP client (for calling out to mocks now, real services later) ===
+httpx>=0.27.0                # async HTTP client — also used as the test client for FastAPI
+
+# === Testing ===
+pytest>=8.3.0
+pytest-asyncio>=0.24.0       # lets you write async test functions
+pytest-mock>=3.14.0          # easy mocking for fake_search_tool / fake_student_request
+
+# === Dev quality-of-life (optional but recommended) ===
+ruff>=0.7.0                  # linting/formatting
+mypy>=1.13.0                 # type checking
