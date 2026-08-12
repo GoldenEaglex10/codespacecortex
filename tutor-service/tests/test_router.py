@@ -8,7 +8,8 @@ from llm.provider import LLMResponse
 from mocks.fake_search_tool import fake_search_course_content
 from mocks.fake_student_request import fake_non_graded_question
 from orchestrator.router import ChatRequest, Orchestrator
-
+from dotenv import load_dotenv
+load_dotenv()
 
 @pytest.mark.asyncio
 async def test_orchestrator_routes_to_tutor_and_returns_reply(scripted_provider):

@@ -1,16 +1,4 @@
 
-"""
-llm/provider.py
-
-The swappable model layer. Every provider (Claude, ChatGPT, Gemini, DeepSeek)
-is wrapped behind the same LLMProvider interface, so agents/tutor/agent.py
-never needs to know which model is actually answering.
-
-DeepSeek is covered by OpenAICompatibleProvider because DeepSeek's API is
-OpenAI-compatible same request/response shape, just a different base_url
-and API key.
-"""
-
 from __future__ import annotations
 
 import json
@@ -94,7 +82,7 @@ class ClaudeProvider(LLMProvider):
 
 class OpenAICompatibleProvider(LLMProvider):
     """
-    Covers both ChatGPT and DeepSeek, since DeepSeek's API is OpenAI-compatible.
+    Covers both ChatGPT and DeepSeek, since DeepSeek's API is OpenAI compatible.
     Only the base_url, api_key and model differ between the two.
     """
 
@@ -153,7 +141,7 @@ class OpenAICompatibleProvider(LLMProvider):
 class GeminiProvider(LLMProvider):
     name = "gemini"
 
-    def __init__(self, model: str = "gemini-2.5-pro", api_key: str | None = None):
+    def __init__(self, model: str = "gemini-3.6-flash", api_key: str | None = None):
         from google import genai
 
         self.model = model
@@ -211,7 +199,7 @@ class GeminiProvider(LLMProvider):
 
 def get_provider(name: ProviderName) -> LLMProvider:
     """
-    Factory — the single place that knows how to build each provider.
+    Factory  the single place that knows how to build each provider.
     This is what the orchestrator/router calls when deciding which model
     should handle a given request (model routing).
     """

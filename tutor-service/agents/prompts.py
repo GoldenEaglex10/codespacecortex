@@ -1,8 +1,3 @@
-""" this file agents/tutor/prompts
-builds the system prompt sent to whichever model is answering . this 
-is more of like the primary control for the tutor's teaching style and the pedagog file is the backup in 
-case the model doesn't follow the style and just gives a direct answer"""
-
 
 from __future__ import annotations
 from context_engine.build_context import StudentContext

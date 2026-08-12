@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from agents.pedagogy import enforce_pedagogy, looks_like_direct_answer
 from context_engine.build_context import build_student_context
-from mocks.fake_student_reqeust import fake_graded_question, fake_non_graded_question
-
+from mocks.fake_student_request import fake_graded_question, fake_non_graded_question
+from dotenv import load_dotenv
+load_dotenv()
 
 def test_detects_direct_answer_phrases():
     assert looks_like_direct_answer("The answer is 42.")

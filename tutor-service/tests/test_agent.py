@@ -8,12 +8,13 @@ from context_engine.tool_registry import build_default_registry
 from llm.provider import LLMResponse, ToolCall
 from mocks.fake_search_tool import fake_search_course_content
 from mocks.fake_student_request import fake_graded_question, fake_non_graded_question
-
+from dotenv import load_dotenv
+load_dotenv()
 
 @pytest.mark.asyncio
 async def test_direct_answer_when_no_tool_needed(scripted_provider):
     provider = scripted_provider(
-        [LLMResponse(text="Sure — here's how classes work in Python...", tool_calls=[])]
+        [LLMResponse(text="Sure  here's how classes work in Python...", tool_calls=[])]
     )
     registry = build_default_registry(fake_search_course_content)
     agent = TutorAgent(provider=provider, tool_registry=registry)

@@ -1,9 +1,3 @@
-"""
-mocks/fake_student_request.py
-
-Stand-in for a real incoming request from the gateway, until that piece is
-ready. Use these to develop and test agent.py / router.py in isolation.
-"""
 
 from __future__ import annotations
 

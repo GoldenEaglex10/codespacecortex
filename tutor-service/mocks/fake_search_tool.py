@@ -1,10 +1,3 @@
-"""
-mocks/fake_search_tool.py
-
-Stand-in for Nyasha's real search_course_content tool. Same input/output
-shape documented in context_engine/tool_registry.py — swap this executor
-for the real one once it exists, without touching agent.py.
-"""
 
 from __future__ import annotations
 
