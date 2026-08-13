@@ -21,7 +21,7 @@ async def main():
     agent = TutorAgent(provider=provider, tool_registry=registry)
     context = build_student_context(fake_non_graded_question())
 
-    reply = await agent.respond(question="want to learn llms engineering with implementations", context=context)
+    reply = await agent.respond(question="stacking  code example  in both python and java", context=context)
 
     print("Reply text:", reply.text)
     print("Tools used:", reply.tools_used)

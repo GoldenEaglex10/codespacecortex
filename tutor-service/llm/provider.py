@@ -247,7 +247,7 @@ class GeminiProvider(LLMProvider):
 
         self.model = model or os.environ.get(
             "GEMINI_MODEL",
-            "gemini-3.6-flash",
+            "gemini-3.5-flash-lite",
         )
 
         self.fallback_model = os.environ.get(
