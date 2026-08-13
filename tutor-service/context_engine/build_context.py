@@ -1,6 +1,5 @@
 """
 context_engine/build_context.py
-
 Turns a raw request payload into a structured StudentContext the tutor agent
 can use  who the student is, what course/lesson they're in, and whether
 this is graded work.
