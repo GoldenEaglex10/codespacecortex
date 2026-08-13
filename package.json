@@ -1,0 +1,13 @@
+{
+  "name": "cortex-knowledge-pipeline",
+  "version": "0.1.0",
+  "description": "Phase 1 - Feeding the AI Real Knowledge (connector, chunking, embedding, tenant-scoped retrieval)",
+  "scripts": {
+    "smoke-test": "ts-node tests/chunking.test.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "@types/node": "^20.14.0"
+  }
+}
