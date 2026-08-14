@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: cortex
+      POSTGRES_PASSWORD: cortex_dev
+      POSTGRES_DB: cortex
+    # No "ports" mapping — Postgres is NOT reachable from outside Docker.
+    # Only other containers on this compose network (i.e. the app) can reach it,
+    # via the hostname "postgres" on its default port 5432.
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cortex"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - internal
+
+  redis:
+    image: redis:7-alpine
+    # No "ports" mapping — same reasoning as Postgres above.
+    # Reachable by other containers as "redis" on port 6379.
+    networks:
+      - internal
+
+  app:
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"   # the ONLY thing exposed to the outside world
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - internal
+    volumes:
+      - ./app:/code/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  pgdata:
