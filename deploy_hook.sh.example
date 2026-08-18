@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 # Rename to deploy_hook.sh and chmod +x to activate.
-# Runs on the server, cwd = /var/www/codespacecortex, after each deploy.
+# Runs on the server after each deploy. cwd is the deploy target dir:
+#   /var/www/codespacecortex          (main branch -> production)
+#   /var/www/codespacecortex-staging  (develop branch -> staging)
+# $DEPLOY_ENV is set to "production" or "staging" so one script can target
+# different ports/pm2 process names per environment.
 set -euo pipefail
 
 # Example for a Python/FastAPI app:
+# PORT=8020; [ "$DEPLOY_ENV" = "staging" ] && PORT=8021
 # python3 -m venv venv --upgrade-deps
 # ./venv/bin/pip install -r requirements.txt
-# pm2 restart codespacecortex-api || pm2 start "venv/bin/uvicorn main:app --host 127.0.0.1 --port 8020" --name codespacecortex-api
+# pm2 restart "codespacecortex-api-$DEPLOY_ENV" \
+#   || pm2 start "venv/bin/uvicorn main:app --host 127.0.0.1 --port $PORT" --name "codespacecortex-api-$DEPLOY_ENV"
 
 # Example for a Node app:
 # npm ci
 # npm run build
-# pm2 restart codespacecortex-web || pm2 start npm --name codespacecortex-web -- start
+# pm2 restart "codespacecortex-web-$DEPLOY_ENV" || pm2 start npm --name "codespacecortex-web-$DEPLOY_ENV" -- start
